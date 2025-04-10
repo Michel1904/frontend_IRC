@@ -50,5 +50,5 @@ input_data['creatinine'] = st.number_input("Créatinine (mg/L)", 0.0, 50.0, 1.0)
 
 # Bouton pour faire la prédiction
 if st.button("Prédire"):
-    response = requests.post("http://backend:8000/predict", json=input_data)
+    response = requests.post("https://backend-irc.onrender.com/predict", json=input_data)
     st.success(response.json()['result'])
