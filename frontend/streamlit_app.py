@@ -50,14 +50,6 @@ input_data['creatinine'] = st.number_input("Créatinine (mg/L)", 0.0, 50.0, 1.0)
 
 # Bouton pour faire la prédiction
 if st.button("Prédire"):
+    # Utilisation de l'URL publique de ton backend
     response = requests.post("https://backend-irc.onrender.com/predict", json=input_data)
-    
-    # Afficher la réponse brute pour le débogage
-    st.write(f"[DEBUG] Response Text: {response.text}")
-    
-    # Essayer de récupérer le JSON si possible
-    try:
-        response_json = response.json()
-        st.success(response_json['result'])
-    except requests.exceptions.JSONDecodeError:
-        st.error(f"Erreur dans la réponse de l'API: {response.text}")
+    st.success(response.json()['result'])
